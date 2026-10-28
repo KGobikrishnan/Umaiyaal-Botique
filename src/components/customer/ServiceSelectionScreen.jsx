@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { UMAIYAAL_SERVICES } from '../../data/mockData';
+import { UMAIYAAL_SERVICE_CATEGORIES, UMAIYAAL_SERVICES } from '../../data/mockData';
 import {
   ShieldCheck,
   CheckCircle2,
@@ -10,11 +10,12 @@ import {
   Layers,
   Feather,
   Gem,
-  Star,
   ArrowRight,
   ArrowLeft,
   RotateCcw,
-  Plus
+  Plus,
+  Check,
+  Search
 } from 'lucide-react';
 
 const ICON_MAP = {
@@ -34,6 +35,9 @@ export const ServiceSelectionScreen = () => {
     setSelectedServices
   } = useApp();
 
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
+
   const toggleService = (serviceName) => {
     if (selectedServices.includes(serviceName)) {
       setSelectedServices(selectedServices.filter((s) => s !== serviceName));
@@ -50,8 +54,36 @@ export const ServiceSelectionScreen = () => {
     setCustomerStep('good_features');
   };
 
+  // Filter services by category and search
+  const filteredServices = UMAIYAAL_SERVICES.filter((service) => {
+    const matchesSearch = service.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          service.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          service.category.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    if (!matchesSearch) return false;
+    if (activeCategory === 'all') return true;
+
+    if (activeCategory === 'sarees') return service.category.includes('Sarees');
+    if (activeCategory === 'chudi') return service.category.includes('Chudi');
+    if (activeCategory === 'kurtis') return service.category.includes('Kurtis');
+    if (activeCategory === 'bottom') return service.category.includes('Bottom');
+    if (activeCategory === 'shawls') return service.category.includes('Shawls');
+    if (activeCategory === 'essentials') return service.category.includes('Jewellery');
+    return true;
+  });
+
+  const categories = [
+    { id: 'all', label: 'All Items (24)', icon: Sparkles },
+    { id: 'sarees', label: 'Sarees (8)', icon: Sparkles },
+    { id: 'chudi', label: 'Chudi & Co-ords (3)', icon: Shirt },
+    { id: 'kurtis', label: 'Kurtis & Maxis (2)', icon: Crown },
+    { id: 'bottom', label: 'Pants & Leggings (4)', icon: Layers },
+    { id: 'shawls', label: 'Shawls (4)', icon: Feather },
+    { id: 'essentials', label: 'Jewellery & Nightwear (4)', icon: Gem },
+  ];
+
   return (
-    <div className="w-full max-w-[430px] mx-auto flex flex-col items-center gap-3.5 p-1 sm:p-2 animate-fade-in text-center">
+    <div className="w-full max-w-[430px] mx-auto flex flex-col items-center gap-3 p-1 sm:p-2 animate-fade-in text-center">
       {/* Store Header Card */}
       <div className="w-full bg-gradient-to-br from-[#FFF5F7]/95 via-[#FFFFFF] to-[#FAF5FF]/95 rounded-3xl border border-pink-100/90 shadow-[0_15px_35px_-10px_rgba(236,72,153,0.12)] p-4 sm:p-5 flex flex-col items-center relative overflow-hidden">
         {/* Background sparkles */}
@@ -74,7 +106,7 @@ export const ServiceSelectionScreen = () => {
         {/* Store Logo */}
         <div className="relative mb-2 mt-0.5">
           <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl overflow-hidden bg-gradient-to-tr from-pink-600 to-purple-700 shadow-md border-2 border-white ring-3 ring-pink-100/90 flex items-center justify-center">
-            {business.logoUrl && business.logoUrl !== '/logo.png' ? (
+            {business.logoUrl ? (
               <img
                 src={business.logoUrl}
                 alt={business.name}
@@ -112,20 +144,60 @@ export const ServiceSelectionScreen = () => {
         {/* Section Heading */}
         <div className="mt-3.5">
           <h2 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
-            What did you shop for <span className="bg-gradient-to-r from-[#ec4899] via-[#d946ef] to-[#9333ea] bg-clip-text text-transparent">today?</span>
+            Which items did you shop for <span className="bg-gradient-to-r from-[#ec4899] via-[#d946ef] to-[#9333ea] bg-clip-text text-transparent">today?</span>
           </h2>
           <p className="text-[11px] text-slate-500 mt-0.5 font-medium">
-            Select the collections you explored at <strong className="text-pink-700 font-bold">Umaiyaal Botique ✨</strong>
+            Tap the items you tried or purchased at <strong className="text-pink-700 font-bold">Umaiyaal Botique ✨</strong>
           </p>
         </div>
+      </div>
+
+      {/* Search Input Bar */}
+      <div className="w-full relative">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search sarees, chudis, kurtis, jewellery..."
+          className="w-full bg-white text-xs px-9 py-2.5 rounded-2xl border border-pink-200/80 shadow-xs focus:ring-2 focus:ring-pink-500 outline-none text-slate-800 placeholder-slate-400"
+        />
+        <Search className="w-4 h-4 text-pink-400 absolute left-3 top-1/2 -translate-y-1/2" />
+        {searchQuery && (
+          <button
+            onClick={() => setSearchQuery('')}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-slate-600"
+          >
+            ✕
+          </button>
+        )}
+      </div>
+
+      {/* Category Filter Pills (Horizontal Scroll) */}
+      <div className="w-full overflow-x-auto no-scrollbar flex items-center gap-1.5 py-1">
+        {categories.map((cat) => {
+          const isActive = activeCategory === cat.id;
+          return (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-3 py-1.5 rounded-xl text-[11px] font-bold whitespace-nowrap transition-all cursor-pointer ${
+                isActive
+                  ? 'bg-gradient-to-r from-[#ec4899] to-[#9333ea] text-white shadow-sm shadow-pink-500/20'
+                  : 'bg-white text-slate-600 border border-pink-100 hover:border-pink-300'
+              }`}
+            >
+              {cat.label}
+            </button>
+          );
+        })}
       </div>
 
       {/* Select Services Header with Count & Clear All */}
       <div className="w-full flex items-center justify-between px-1 text-xs">
         <div className="flex items-center gap-2">
-          <span className="font-extrabold text-slate-900">Choose Products &amp; Collections</span>
+          <span className="font-extrabold text-slate-900">Catalogue ({filteredServices.length})</span>
           <span className="text-[10px] font-extrabold bg-pink-100 text-pink-700 px-2.5 py-0.5 rounded-full border border-pink-200/60 shadow-2xs">
-            {selectedServices.length} chosen
+            {selectedServices.length} selected
           </span>
         </div>
 
@@ -140,80 +212,72 @@ export const ServiceSelectionScreen = () => {
       </div>
 
       {/* Interactive Products & Services List Cards */}
-      <div className="w-full space-y-2.5">
-        {UMAIYAAL_SERVICES.map((service) => {
-          const isSelected = selectedServices.includes(service.name);
-          const IconComp = ICON_MAP[service.iconName] || Sparkles;
+      <div className="w-full space-y-2">
+        {filteredServices.length > 0 ? (
+          filteredServices.map((service) => {
+            const isSelected = selectedServices.includes(service.name);
+            const IconComp = ICON_MAP[service.iconName] || Sparkles;
 
-          return (
-            <button
-              key={service.id}
-              onClick={() => toggleService(service.name)}
-              className={`w-full bg-white rounded-2xl p-3.5 flex flex-col text-left transition-all duration-200 cursor-pointer border ${
-                isSelected
-                  ? 'border-pink-500 shadow-md shadow-pink-500/15 ring-2 ring-pink-500/30 bg-pink-50/20 scale-[1.01]'
-                  : 'border-slate-200/80 hover:border-pink-300 shadow-2xs hover:shadow-xs'
-              }`}
-            >
-              <div className="flex items-start justify-between gap-3 w-full">
-                <div className="flex items-start gap-3 min-w-0 flex-1">
+            return (
+              <button
+                key={service.id}
+                onClick={() => toggleService(service.name)}
+                className={`w-full bg-white rounded-2xl p-3 flex items-center justify-between text-left transition-all duration-200 cursor-pointer border ${
+                  isSelected
+                    ? 'border-pink-500 shadow-md shadow-pink-500/15 ring-2 ring-pink-500/30 bg-pink-50/20 scale-[1.01]'
+                    : 'border-slate-200/80 hover:border-pink-300 shadow-2xs hover:shadow-xs'
+                }`}
+              >
+                <div className="flex items-center gap-3 min-w-0 flex-1">
                   {/* Service Icon */}
-                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-tr ${service.color} text-white flex items-center justify-center shrink-0 shadow-sm shadow-pink-500/20`}>
-                    <IconComp className="w-5 h-5 stroke-[2.2]" />
+                  <div className={`w-9 h-9 rounded-xl bg-gradient-to-tr ${service.color} text-white flex items-center justify-center shrink-0 shadow-sm shadow-pink-500/20`}>
+                    <IconComp className="w-4.5 h-4.5 stroke-[2.2]" />
                   </div>
 
                   {/* Service Info */}
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2 flex-wrap">
+                    <div className="flex items-center gap-1.5 flex-wrap">
                       <span className="font-extrabold text-xs text-slate-900 leading-tight">
                         {service.name}
                       </span>
                       {service.badge && (
-                        <span className="text-[9px] font-extrabold px-2 py-0.2 bg-gradient-to-r from-pink-100 to-purple-100 text-pink-800 rounded-md border border-pink-200/70">
+                        <span className="text-[8.5px] font-bold px-2 py-0.2 bg-pink-50 text-pink-700 rounded-md border border-pink-200/70">
                           {service.badge}
                         </span>
                       )}
                     </div>
-                    <p className="text-[10px] text-slate-500 mt-1 leading-snug font-medium line-clamp-2">
+                    <p className="text-[10px] text-slate-500 mt-0.5 leading-tight font-medium line-clamp-1">
                       {service.desc}
                     </p>
-
-                    {/* Tag Pills */}
-                    <div className="flex items-center gap-1.5 mt-2 flex-wrap">
-                      {service.tags.map((tag, idx) => (
-                        <span
-                          key={idx}
-                          className="text-[9px] font-semibold bg-slate-50 text-slate-600 px-2 py-0.5 rounded-lg border border-slate-200/60"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                 </div>
 
                 {/* Selection Checkbox Pill */}
-                <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-0.5 transition-all ${
+                <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 ml-2 transition-all ${
                   isSelected
                     ? 'border-pink-600 bg-pink-600 text-white shadow-xs'
                     : 'border-slate-300 bg-white'
                 }`}>
                   {isSelected ? (
-                    <CheckCircle2 className="w-3.5 h-3.5 stroke-[3]" />
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
                   ) : (
                     <Plus className="w-3 h-3 text-slate-400" />
                   )}
                 </div>
-              </div>
-            </button>
-          );
-        })}
+              </button>
+            );
+          })
+        ) : (
+          <div className="bg-white rounded-2xl p-6 text-center text-slate-400 text-xs border border-slate-200">
+            No items matched "{searchQuery}". Try searching another name!
+          </div>
+        )}
       </div>
 
       {/* Floating Continue Button */}
       <button
         onClick={handleNext}
-        className="w-full py-3.5 px-4 bg-gradient-to-r from-[#ec4899] via-[#d946ef] to-[#9333ea] hover:from-[#db2777] hover:via-[#c026d3] hover:to-[#7e22ce] text-white rounded-2xl font-black text-xs sm:text-sm shadow-xl shadow-pink-600/30 flex items-center justify-between transition-all cursor-pointer transform hover:-translate-y-0.5"
+        className="w-full py-3.5 px-4 bg-gradient-to-r from-[#ec4899] via-[#d946ef] to-[#9333ea] hover:from-[#db2777] hover:via-[#c026d3] hover:to-[#7e22ce] text-white rounded-2xl font-black text-xs sm:text-sm shadow-xl shadow-pink-600/30 flex items-center justify-between transition-all cursor-pointer transform hover:-translate-y-0.5 mt-2"
       >
         <div className="flex items-center gap-2">
           <span className="tracking-wider uppercase">CONTINUE TO REVIEW DETAILS</span>

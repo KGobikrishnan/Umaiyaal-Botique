@@ -111,7 +111,7 @@ export const ReviewDraftScreen = () => {
     }
 
     // 2. Open Google Review URL directly
-    const targetUrl = business.googlePlaceUrl || 'https://g.page/r/Cb1zt1msXsX9EBM/review';
+    const targetUrl = business.googlePlaceUrl || 'https://g.page/r/CSkwyUzjxg-pEBM/review';
     window.open(targetUrl, '_blank', 'noopener,noreferrer');
 
     // 3. Trigger thank-you modal
@@ -129,7 +129,7 @@ export const ReviewDraftScreen = () => {
         {/* Store Logo */}
         <div className="relative mb-2.5 mt-1">
           <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-tr from-pink-600 to-purple-700 shadow-lg border-3 border-white ring-4 ring-pink-100/90 flex items-center justify-center">
-            {business.logoUrl && business.logoUrl !== '/logo.png' ? (
+            {business.logoUrl ? (
               <img
                 src={business.logoUrl}
                 alt={business.name}

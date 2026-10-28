@@ -133,7 +133,7 @@ export const FeatureSelectionScreen = () => {
         {/* Store Logo */}
         <div className="relative mb-2 mt-0.5">
           <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl overflow-hidden bg-gradient-to-tr from-pink-600 to-purple-700 shadow-lg border-2 border-white ring-3 ring-pink-100/90 flex items-center justify-center">
-            {business.logoUrl && business.logoUrl !== '/logo.png' ? (
+            {business.logoUrl ? (
               <img
                 src={business.logoUrl}
                 alt={business.name}

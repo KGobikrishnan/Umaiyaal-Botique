@@ -13,7 +13,7 @@ export const INITIAL_BUSINESS = {
   bannerUrl: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80",
   tagline: "Exclusive Designer Sarees, Chudi Sets, Kurtis, Shawls & Fashion Jewellery",
   address: "Theni Main Road, Tamil Nadu",
-  googlePlaceUrl: "https://g.page/r/Cb1zt1msXsX9EBM/review",
+  googlePlaceUrl: "https://g.page/r/CSkwyUzjxg-pEBM/review",
   verified: true,
   rating: 4.9,
   totalReviews: 2450,
@@ -25,69 +25,100 @@ export const INITIAL_MERCHANTS_LIST = [
   INITIAL_BUSINESS
 ];
 
-// Product & Services Catalogue for Umaiyaal Botique
-export const UMAIYAAL_SERVICES = [
+// Product & Services Catalogue for Umaiyaal Botique (Exact Client Categories & Items)
+export const UMAIYAAL_SERVICE_CATEGORIES = [
   {
-    id: 'sarees_collection',
-    name: 'Exclusive Sarees Collection',
-    category: 'Sarees & Traditional Drapes',
-    badge: 'Popular',
-    desc: 'Soft silk, Fancy cotton, Cut work, Hand embroidery, Raw silk, Party wear & Tassure silk sarees.',
+    id: 'cat_sarees',
+    categoryName: 'Sarees Collection',
+    categoryDesc: 'Handcrafted drapes, pure silks, intricate cut-work & festive celebration sarees',
     iconName: 'Sparkles',
-    color: 'from-rose-500 to-pink-600',
-    tags: ['Soft Silk Sarees', 'Fancy Cotton Sarees', 'Cut Work Sarees', 'Embroidery Work Sarees', 'Party Wear Sarees', 'Tassure Silk Sarees']
+    items: [
+      { id: 'fancy-cotton-sarees', name: 'Fancy Cotton Sarees', badge: 'Daily & Casual', desc: 'Lightweight, breathable fancy cotton sarees with designer borders.' },
+      { id: 'soft-silk-sarees', name: 'Soft Silk Sarees', badge: 'Best Seller', desc: 'Pure feather-soft silk sarees with rich pallu and contrasting blouse.' },
+      { id: 'cotton-sarees', name: 'Cotton Sarees', badge: 'Traditional', desc: 'Authentic pure cotton sarees with classic woven motifs and temple borders.' },
+      { id: 'cut-work-sarees', name: 'Cut Work Sarees', badge: 'Trending', desc: 'Artisanal laser & handcrafted cut work detailing along borders and pallu.' },
+      { id: 'embroidery-work-sarees', name: 'Embroidery Work Sarees', badge: 'Grand Occasion', desc: 'Delicate thread, sequin, and zari embroidery crafted on premium fabrics.' },
+      { id: 'raw-silk-sarees', name: 'Raw Silk Sarees', badge: 'Heritage', desc: 'Rich textured pure raw silk sarees radiating royal traditional luster.' },
+      { id: 'party-wear-sarees', name: 'Party Wear Sarees', badge: 'Glamour', desc: 'Contemporary designer party sarees with modern drapes and glamorous sheen.' },
+      { id: 'tassure-silk-sarees', name: 'Tassure Silk Sarees', badge: 'Luxury', desc: 'Exclusive natural textured Tussar/Tassure silk sarees with artistic prints.' }
+    ]
   },
   {
-    id: 'chudi_coord_sets',
-    name: 'Co-ord Sets & Chudi Sets',
-    category: 'Ethnic & Modern Sets',
-    badge: 'Best Seller',
-    desc: 'Trendy co-ord sets, festive grand chudi sets, and breathable Mul cotton daily chudi sets.',
+    id: 'cat_chudi_coord',
+    categoryName: 'Chudi & Co-ord Sets',
+    categoryDesc: 'Festive grand chudis, breezy Mul cotton daily wear & modern chic co-ords',
     iconName: 'Shirt',
-    color: 'from-purple-600 to-pink-500',
-    tags: ['Co-ord Sets', 'Festive Chudi Sets', 'Mul Cotton Chudi Sets']
+    items: [
+      { id: 'coord-sets', name: 'Co-ord Sets', badge: 'Top Trending', desc: 'Chic matching 2-piece & 3-piece western and ethnic co-ordinated sets.' },
+      { id: 'festive-chudi-sets', name: 'Festive Chudi Sets', badge: 'Popular', desc: 'Richly embellished festive chudi sets complete with ornate heavy dupattas.' },
+      { id: 'mul-cotton-chudi-sets', name: 'Mul Cotton Chudi Sets', badge: 'Super Comfort', desc: 'Feather-light 100% Mul cotton chudi sets crafted for effortless all-day wear.' }
+    ]
   },
   {
-    id: 'kurtis_maxi_dress',
-    name: 'Kurtis & Maxi Dresses',
-    category: 'Casual & Occasion Wear',
-    badge: 'Trending',
-    desc: 'Designer flared kurtis, straight-cut office kurtis, flowy maxi gowns & ethnic long dresses.',
+    id: 'cat_dresses_kurtis',
+    categoryName: 'Kurtis & Maxi Dresses',
+    categoryDesc: 'Elegant occasion maxis, flared anarkalis & classy office wear kurtis',
     iconName: 'Crown',
-    color: 'from-amber-500 to-rose-500',
-    tags: ['Designer Kurtis', 'Flowy Maxi Dresses', 'Daily Wear Kurtis', 'Anarkali Fits']
+    items: [
+      { id: 'maxi-dress', name: 'Maxi Dress', badge: 'Flowy & Elegant', desc: 'Graceful floor-length designer maxi dresses and Indo-western ethnic gowns.' },
+      { id: 'kurtis', name: 'Kurtis', badge: 'Daily & Office', desc: 'A-line, flared, and straight-cut designer kurtis with comfortable cuts.' }
+    ]
   },
   {
-    id: 'pants_leggings',
-    name: 'Leggings & Bottom Wear',
-    category: 'Comfort Bottoms',
-    badge: 'Essential',
-    desc: '4-way stretch leggings, palazzo pants, cotton straight pants, and dazzling shimmer leggings.',
+    id: 'cat_bottom_wear',
+    categoryName: 'Pants & Bottom Wear',
+    categoryDesc: '4-way super stretch leggings, palazzo pants & tailored cotton trousers',
     iconName: 'Layers',
-    color: 'from-emerald-600 to-teal-600',
-    tags: ['Super Stretch Leggings', 'Palazzo Pants', 'Cotton Straight Pants', 'Shimmer Party Leggings']
+    items: [
+      { id: 'leggings', name: 'Leggings', badge: '4-Way Stretch', desc: 'Premium bio-washed super stretch leggings available in 50+ vibrant shades.' },
+      { id: 'palazo-pants', name: 'Palazo Pants', badge: 'Breezy Fit', desc: 'Flared comfortable palazzo pants with elasticated waistbands and rich fall.' },
+      { id: 'cotton-straight-pants', name: 'Cotton Straight Pants', badge: 'Formal & Chic', desc: 'Tailored 100% cotton straight-cut pants with pocket detailing for kurtis.' },
+      { id: 'shimmer-leggings', name: 'Shimmer Leggings', badge: 'Party Special', desc: 'Dazzling metallic shimmer leggings crafted for festive tunics and parties.' }
+    ]
   },
   {
-    id: 'designer_shawls',
-    name: 'Shawls & Dupattas',
-    category: 'Dupattas & Shawls',
-    badge: 'Artisan',
-    desc: 'Lightweight chiffon shawls, rich embroidery work shawls, pure cotton shawls & rich silk shawls.',
+    id: 'cat_shawls_dupattas',
+    categoryName: 'Shawls & Dupattas',
+    categoryDesc: 'Chiffon, pure cotton, handcrafted embroidery & lustrous silk shawls',
     iconName: 'Feather',
-    color: 'from-violet-600 to-purple-600',
-    tags: ['Chiffon Shawls', 'Embroidery Shawls', 'Cotton Shawls', 'Pure Silk Shawls']
+    items: [
+      { id: 'chiffon-shawls', name: 'Chiffon Shawls', badge: 'Light & Flowy', desc: 'Featherweight flowy chiffon shawls with neat picot and tasseled hemlines.' },
+      { id: 'embroidery-shawls', name: 'Embroidery Shawls', badge: 'Artisanal', desc: 'Intricate floral and geometric hand-embroidery work on premium stoles.' },
+      { id: 'cotton-shawls', name: 'Cotton Shawls', badge: 'Pure Comfort', desc: 'Breathable pure cotton dupattas and daily stoles with traditional block prints.' },
+      { id: 'silk-shawls', name: 'Silk Shawls', badge: 'Royal Touch', desc: 'Lustrous festive silk shawls and stoles with opulent golden zari borders.' }
+    ]
   },
   {
-    id: 'jewellery_nightwear_inner',
-    name: 'Jewellery, Maternity & Innerwear',
-    category: 'Accessories & Comfort',
-    badge: 'Must Have',
-    desc: 'Statement artificial jewellery, comfortable maternity outfits, soft nightwear & daily innerwear.',
+    id: 'cat_essentials_jewellery',
+    categoryName: 'Jewellery & Essentials',
+    categoryDesc: 'Antique artificial jewellery, maternity wear, comfort nightwear & innerwear',
     iconName: 'Gem',
-    color: 'from-fuchsia-500 to-rose-600',
-    tags: ['Artificial Jewellery', 'Maternity Wears', 'Comfort Nightwear', 'Premium Innerwear']
+    items: [
+      { id: 'artificial-jewellery', name: 'Artificial Jewellery Items', badge: 'Antique & Bridal', desc: 'Kundan, matte gold, temple design necklaces, jhumkas, and matching bangles.' },
+      { id: 'maternity-wears', name: 'Maternity Wears', badge: 'Mother Care', desc: 'Thoughtfully designed maternity dresses & tops with discreet feeding zips.' },
+      { id: 'nightwears', name: 'Nightwear’s', badge: 'Ultra Soft', desc: 'Comfortable pure cotton nighties, pajama sets, and lounge kaftans.' },
+      { id: 'inner-wears', name: 'Inner Wears', badge: 'Daily Essential', desc: 'High-comfort, skin-friendly cotton innerwear crafted for all-day breathability.' }
+    ]
   }
 ];
+
+// Flat list of all 24 specific client services for selection and card rendering
+export const UMAIYAAL_SERVICES = UMAIYAAL_SERVICE_CATEGORIES.flatMap(cat => 
+  cat.items.map(item => ({
+    id: item.id,
+    name: item.name,
+    category: cat.categoryName,
+    badge: item.badge,
+    desc: item.desc,
+    iconName: cat.iconName,
+    color: cat.id === 'cat_sarees' ? 'from-rose-500 to-pink-600' :
+           cat.id === 'cat_chudi_coord' ? 'from-purple-600 to-pink-500' :
+           cat.id === 'cat_dresses_kurtis' ? 'from-amber-500 to-rose-500' :
+           cat.id === 'cat_bottom_wear' ? 'from-emerald-600 to-teal-600' :
+           cat.id === 'cat_shawls_dupattas' ? 'from-violet-600 to-purple-600' :
+           'from-fuchsia-500 to-rose-600'
+  }))
+);
 
 export const FEATURE_TAGS = [
   { id: "fabric_quality", title: "Fabric & Material Quality", desc: "Pure soft fabrics & long-lasting finish", iconName: "Sparkles", defaultSelected: true },
@@ -153,7 +184,7 @@ export const INITIAL_ANALYTICS_DATA = {
   conversionRate: 86.3
 };
 
-// Fallback dynamic generator so ANY slug returns Umaiyaal Botique or formatted store profile
+// Fallback dynamic generator
 export const getMerchantBySlugOrFallback = (slug, existingList = INITIAL_MERCHANTS_LIST) => {
   if (!slug || slug === 'umaiyaal-botique' || slug === 'umaiyaal' || slug === 'barani-cars') return INITIAL_BUSINESS;
   

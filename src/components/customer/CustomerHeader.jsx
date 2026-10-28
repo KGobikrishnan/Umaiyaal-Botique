@@ -195,7 +195,15 @@ export const CustomerHeader = () => {
                 {/* Store Avatar Logo */}
                 <div className="relative shrink-0">
                   <div className="w-10 h-10 rounded-xl overflow-hidden bg-gradient-to-tr from-pink-600 to-purple-700 shadow-xs border-2 border-white ring-2 ring-pink-100 flex items-center justify-center text-white">
-                    <Crown className="w-5 h-5 text-amber-300" />
+                    {business.logoUrl ? (
+                      <img
+                        src={business.logoUrl}
+                        alt={business.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <Crown className="w-5 h-5 text-amber-300" />
+                    )}
                   </div>
                   <div className="absolute -bottom-0.5 -right-0.5 bg-emerald-500 text-white rounded-full p-0.5 ring-1 ring-white flex items-center justify-center">
                     <CheckCircle2 className="w-2.5 h-2.5 stroke-[3]" />

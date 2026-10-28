@@ -41,7 +41,7 @@ export const CustomerWelcome = () => {
         {/* Store Logo (Rounded Square & Larger Size) with verified checkmark */}
         <div className="relative mb-2.5 mt-1">
           <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-tr from-pink-600 to-purple-700 shadow-lg border-3 border-white ring-4 ring-pink-100/90 flex items-center justify-center">
-            {business.logoUrl && business.logoUrl !== '/logo.png' ? (
+            {business.logoUrl ? (
               <img
                 src={business.logoUrl}
                 alt={business.name}
