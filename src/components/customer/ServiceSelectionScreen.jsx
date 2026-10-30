@@ -10,6 +10,7 @@ import {
   Layers,
   Feather,
   Gem,
+  ShoppingBag,
   ArrowRight,
   ArrowLeft,
   RotateCcw,
@@ -24,7 +25,8 @@ const ICON_MAP = {
   Crown,
   Layers,
   Feather,
-  Gem
+  Gem,
+  ShoppingBag
 };
 
 export const ServiceSelectionScreen = () => {
@@ -66,6 +68,7 @@ export const ServiceSelectionScreen = () => {
     if (activeCategory === 'sarees') return service.category.includes('Sarees');
     if (activeCategory === 'chudi') return service.category.includes('Chudi');
     if (activeCategory === 'kurtis') return service.category.includes('Kurtis');
+    if (activeCategory === 'western') return service.category.includes('Western');
     if (activeCategory === 'bottom') return service.category.includes('Bottom');
     if (activeCategory === 'shawls') return service.category.includes('Shawls');
     if (activeCategory === 'essentials') return service.category.includes('Jewellery');
@@ -73,13 +76,14 @@ export const ServiceSelectionScreen = () => {
   });
 
   const categories = [
-    { id: 'all', label: 'All Items (24)', icon: Sparkles },
+    { id: 'all', label: `All Items (${UMAIYAAL_SERVICES.length})`, icon: Sparkles },
     { id: 'sarees', label: 'Sarees (8)', icon: Sparkles },
     { id: 'chudi', label: 'Chudi & Co-ords (3)', icon: Shirt },
     { id: 'kurtis', label: 'Kurtis & Maxis (2)', icon: Crown },
+    { id: 'western', label: 'Western Wear (5)', icon: ShoppingBag },
     { id: 'bottom', label: 'Pants & Leggings (4)', icon: Layers },
     { id: 'shawls', label: 'Shawls (4)', icon: Feather },
-    { id: 'essentials', label: 'Jewellery & Nightwear (4)', icon: Gem },
+    { id: 'essentials', label: 'Jewellery & Essentials (4)', icon: Gem },
   ];
 
   return (
@@ -120,7 +124,7 @@ export const ServiceSelectionScreen = () => {
             )}
           </div>
           <div className="absolute -bottom-1 -right-1 bg-emerald-500 text-white rounded-full p-0.5 shadow-md ring-2 ring-white flex items-center justify-center">
-            <CheckCircle2 className="w-3 h-3 stroke-[3]" />
+            <CheckCircle2 className="w-3.5 h-3.5 stroke-[3]" />
           </div>
         </div>
 
@@ -158,7 +162,7 @@ export const ServiceSelectionScreen = () => {
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search sarees, chudis, kurtis, jewellery..."
+          placeholder="Search western dresses, jeans, crop tops, sarees..."
           className="w-full bg-white text-xs px-9 py-2.5 rounded-2xl border border-pink-200/80 shadow-xs focus:ring-2 focus:ring-pink-500 outline-none text-slate-800 placeholder-slate-400"
         />
         <Search className="w-4 h-4 text-pink-400 absolute left-3 top-1/2 -translate-y-1/2" />

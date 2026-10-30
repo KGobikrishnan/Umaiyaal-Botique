@@ -8,6 +8,7 @@ import {
   Layers, 
   Feather, 
   Gem, 
+  ShoppingBag,
   MessageCircle, 
   Star, 
   MapPin, 
@@ -39,27 +40,26 @@ export const Services = () => {
   })).filter(cat => cat.items.length > 0);
 
   const tabs = [
-    { id: 'all', label: 'All Collections (24)' },
+    { id: 'all', label: `All Collections (${UMAIYAAL_SERVICES.length})` },
     { id: 'cat_sarees', label: 'Sarees (8)' },
     { id: 'cat_chudi_coord', label: 'Chudi & Co-ords (3)' },
     { id: 'cat_dresses_kurtis', label: 'Kurtis & Maxis (2)' },
+    { id: 'cat_western_wear', label: 'Western Wear (5)' },
     { id: 'cat_bottom_wear', label: 'Bottom Wear (4)' },
     { id: 'cat_shawls_dupattas', label: 'Shawls (4)' },
     { id: 'cat_essentials_jewellery', label: 'Jewellery & Essentials (4)' }
   ];
 
-  const totalItemCount = filteredCategories.reduce((acc, cat) => acc + cat.items.length, 0);
-
   return (
     <div className="min-h-screen bg-[#0e0714] text-gray-100 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#ec4899] selection:text-white pb-20">
       {/* SEO Meta Tags */}
       <Helmet>
-        <title>Our 24 Collections & Services | Umaiyaal Botique - Exclusive Designer Clothing</title>
+        <title>Our Collections & Services | Umaiyaal Botique - Exclusive Designer Clothing</title>
         <meta 
           name="description" 
-          content="Explore all 24 exclusive services at Umaiyaal Botique: Soft silk sarees, fancy cotton sarees, cut work sarees, co-ord sets, festive chudi sets, kurtis, maxi dresses, leggings, shawls, artificial jewellery & maternity wear." 
+          content="Explore all exclusive collections at Umaiyaal Botique: Soft silk sarees, cut work sarees, co-ord sets, festive chudis, western dresses, jeans, jeggings, crop tops, t-shirts, leggings, shawls, artificial jewellery & maternity wear." 
         />
-        <meta name="keywords" content="Umaiyaal Botique, soft silk sarees, cut work sarees, fancy cotton sarees, co-ord sets, festive chudi sets, mul cotton chudis, kurtis, maxi dress, leggings, palazzo pants, shimmer leggings, embroidery shawls, artificial jewellery, maternity wear" />
+        <meta name="keywords" content="Umaiyaal Botique, western dresses, jeans, jeggings, crop tops, t-shirts, soft silk sarees, cut work sarees, fancy cotton sarees, co-ord sets, festive chudi sets, mul cotton chudis, kurtis, maxi dress, leggings, palazzo pants, shimmer leggings, embroidery shawls, artificial jewellery, maternity wear" />
       </Helmet>
 
       {/* Navigation Header Bar */}
@@ -114,7 +114,7 @@ export const Services = () => {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1e0e2e] border border-[#3b1d54] mb-4 shadow-inner">
             <Sparkles className="w-3.5 h-3.5 text-[#ec4899] animate-pulse" />
             <span className="text-xs sm:text-sm font-semibold tracking-wide uppercase text-pink-200">
-              Complete 24 Boutique Services &amp; Collections
+              Complete Ethnic &amp; Western Fashion Boutique
             </span>
           </div>
 
@@ -123,7 +123,7 @@ export const Services = () => {
           </h1>
 
           <p className="text-sm sm:text-lg text-pink-100/70 max-w-2xl mx-auto mb-8 leading-relaxed">
-            From regal soft silk &amp; cut-work sarees to breezy Mul cotton chudis, trendy co-ord sets, flowy maxi dresses, leggings, embroidery shawls &amp; statement artificial jewellery.
+            From regal soft silk sarees &amp; Mul cotton chudis to trendy western dresses, jeans, jeggings, crop tops, t-shirts, leggings, embroidery shawls &amp; artificial jewellery.
           </p>
 
           {/* Search bar inside hero */}
@@ -132,7 +132,7 @@ export const Services = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by collection (e.g. Mul cotton, soft silk, co-ord, palazo)..."
+              placeholder="Search western dresses, jeans, crop tops, soft silk, co-ords..."
               className="w-full bg-[#1b0a2c]/90 text-sm px-11 py-3 rounded-2xl border border-pink-500/30 text-white placeholder-pink-200/40 focus:border-[#ec4899] focus:ring-2 focus:ring-[#ec4899]/30 outline-none shadow-lg"
             />
             <Search className="w-4 h-4 text-pink-400 absolute left-4 top-1/2 -translate-y-1/2" />
@@ -263,24 +263,24 @@ export const Services = () => {
                 Why Women Love Umaiyaal Botique
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-['Outfit'] mb-4">
-                24 Dedicated Services &amp; Fashion Collections Under One Roof
+                Full-Spectrum Ethnic &amp; Western Fashion Under One Roof
               </h3>
               <p className="text-pink-100/70 text-sm leading-relaxed mb-6">
-                From bridal soft silks, delicate cut-work sarees to daily breathable Mul cotton chudis, maternity comfort wear, and matching artificial jewellery — every piece is handpicked with love.
+                From bridal soft silks &amp; cut-work sarees to modern western dresses, jeans, jeggings, crop tops, cotton t-shirts, maternity wear, and matching artificial jewellery.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-200">
                   <CheckCircle2 className="w-4 h-4 text-[#ec4899]" />
-                  <span>Soft Silk, Raw Silk &amp; Tassure</span>
+                  <span>Soft Silk, Raw Silk &amp; Tassure Sarees</span>
                 </div>
                 <div className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-200">
                   <CheckCircle2 className="w-4 h-4 text-[#ec4899]" />
-                  <span>Pure Mul Cotton Chudi Sets</span>
+                  <span>Trendy Western Dresses, Jeans &amp; Crop Tops</span>
                 </div>
                 <div className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-200">
                   <CheckCircle2 className="w-4 h-4 text-[#ec4899]" />
-                  <span>Trendy Co-ord Sets &amp; Maxis</span>
+                  <span>Mul Cotton Chudi Sets &amp; Co-ords</span>
                 </div>
                 <div className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-200">
                   <CheckCircle2 className="w-4 h-4 text-[#ec4899]" />
@@ -291,9 +291,9 @@ export const Services = () => {
 
             <div className="bg-[#170a24] p-6 sm:p-8 rounded-2xl border border-[#331749] text-center lg:text-left flex flex-col justify-between">
               <div>
-                <h4 className="text-xl font-bold text-white mb-2 font-['Outfit']">Have a Custom Styling Requirement?</h4>
+                <h4 className="text-xl font-bold text-white mb-2 font-['Outfit']">Looking for Styling Recommendations?</h4>
                 <p className="text-pink-100/70 text-xs sm:text-sm mb-6">
-                  Visit our studio on Theni Main Road or talk to our boutique team on WhatsApp for video calls &amp; doorstep delivery.
+                  Visit our studio on Theni Main Road or chat directly on WhatsApp for catalogue photos, video shopping &amp; orders.
                 </p>
                 <div className="space-y-2 text-xs text-pink-100/80 mb-6">
                   <div className="flex items-center justify-center lg:justify-start gap-2">
@@ -332,7 +332,7 @@ export const Services = () => {
 
       {/* Footer */}
       <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-[#231030] text-center text-xs text-pink-200/50">
-        <p>© {new Date().getFullYear()} Umaiyaal Botique. 24 Exclusive Women's Designer Collections in Tamil Nadu.</p>
+        <p>© {new Date().getFullYear()} Umaiyaal Botique. Exclusive Ethnic &amp; Western Fashion in Tamil Nadu.</p>
       </footer>
     </div>
   );

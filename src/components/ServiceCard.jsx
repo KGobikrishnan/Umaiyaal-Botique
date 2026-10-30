@@ -6,6 +6,7 @@ import {
   Layers, 
   Feather, 
   Gem, 
+  ShoppingBag,
   CheckCircle2, 
   ArrowRight, 
   MessageCircle, 
@@ -17,6 +18,7 @@ const ICON_MAP = {
   sarees: Sparkles,
   chudi: Shirt,
   kurtis: Crown,
+  western: ShoppingBag,
   pants: Layers,
   shawls: Feather,
   jewellery: Gem

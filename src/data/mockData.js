@@ -11,9 +11,9 @@ export const INITIAL_BUSINESS = {
   monthlyScanLimit: 5000,
   logoUrl: "/logo.png",
   bannerUrl: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80",
-  tagline: "Exclusive Designer Sarees, Chudi Sets, Kurtis, Shawls & Fashion Jewellery",
+  tagline: "Exclusive Designer Sarees, Chudi Sets, Western Wear, Shawls & Fashion Jewellery",
   address: "Theni Main Road, Tamil Nadu",
-  googlePlaceUrl: "https://g.page/r/CTONmpLlmZu-EBM/review",
+  googlePlaceUrl: "https://g.page/r/CSkwyUzjxg-pEBM/review",
   verified: true,
   rating: 4.9,
   totalReviews: 2450,
@@ -25,7 +25,7 @@ export const INITIAL_MERCHANTS_LIST = [
   INITIAL_BUSINESS
 ];
 
-// Product & Services Catalogue for Umaiyaal Botique (Exact Client Categories & Items)
+// Product & Services Catalogue for Umaiyaal Botique (Accurate Categories & Items including Western Wear)
 export const UMAIYAAL_SERVICE_CATEGORIES = [
   {
     id: 'cat_sarees',
@@ -62,6 +62,19 @@ export const UMAIYAAL_SERVICE_CATEGORIES = [
     items: [
       { id: 'maxi-dress', name: 'Maxi Dress', badge: 'Flowy & Elegant', desc: 'Graceful floor-length designer maxi dresses and Indo-western ethnic gowns.' },
       { id: 'kurtis', name: 'Kurtis', badge: 'Daily & Office', desc: 'A-line, flared, and straight-cut designer kurtis with comfortable cuts.' }
+    ]
+  },
+  {
+    id: 'cat_western_wear',
+    categoryName: 'Western Wear & Tops',
+    categoryDesc: 'Trendy western dresses, high-waist jeans, jeggings, stylish crop tops & casual t-shirts',
+    iconName: 'ShoppingBag',
+    items: [
+      { id: 'western-dresses', name: 'Western Dresses', badge: 'Hot Fashion', desc: 'Chic bodycon, A-line, skater, midi, and casual party wear western dresses.' },
+      { id: 'jeans', name: 'Jeans', badge: 'Trendy Fit', desc: 'Premium stretchable high-waist, straight fit, mom jeans & wide-leg denim.' },
+      { id: 'jeggings', name: 'Jeggings', badge: 'Super Stretch', desc: 'Ultra-comfortable denim-look elasticated jeggings offering flexible all-day fit.' },
+      { id: 'crop-tops', name: 'Crop Tops', badge: 'Youth Chic', desc: 'Ribbed, floral, corset-style & casual designer crop tops for jeans and skirts.' },
+      { id: 't-shirts', name: 'T-Shirt', badge: 'Daily Casual', desc: '100% bio-washed cotton oversized, graphic, and regular fit trendy t-shirts.' }
     ]
   },
   {
@@ -102,7 +115,7 @@ export const UMAIYAAL_SERVICE_CATEGORIES = [
   }
 ];
 
-// Flat list of all 24 specific client services for selection and card rendering
+// Flat list of all 29 specific client services for selection and card rendering
 export const UMAIYAAL_SERVICES = UMAIYAAL_SERVICE_CATEGORIES.flatMap(cat => 
   cat.items.map(item => ({
     id: item.id,
@@ -114,6 +127,7 @@ export const UMAIYAAL_SERVICES = UMAIYAAL_SERVICE_CATEGORIES.flatMap(cat =>
     color: cat.id === 'cat_sarees' ? 'from-rose-500 to-pink-600' :
            cat.id === 'cat_chudi_coord' ? 'from-purple-600 to-pink-500' :
            cat.id === 'cat_dresses_kurtis' ? 'from-amber-500 to-rose-500' :
+           cat.id === 'cat_western_wear' ? 'from-blue-600 to-cyan-500' :
            cat.id === 'cat_bottom_wear' ? 'from-emerald-600 to-teal-600' :
            cat.id === 'cat_shawls_dupattas' ? 'from-violet-600 to-purple-600' :
            'from-fuchsia-500 to-rose-600'
@@ -122,12 +136,12 @@ export const UMAIYAAL_SERVICES = UMAIYAAL_SERVICE_CATEGORIES.flatMap(cat =>
 
 export const FEATURE_TAGS = [
   { id: "fabric_quality", title: "Fabric & Material Quality", desc: "Pure soft fabrics & long-lasting finish", iconName: "Sparkles", defaultSelected: true },
-  { id: "collection_variety", title: "Unique Collections", desc: "Huge range of sarees, chudis & sets", iconName: "Crown", defaultSelected: true },
+  { id: "collection_variety", title: "Unique Collections", desc: "Huge range of ethnic & western wear", iconName: "Crown", defaultSelected: true },
   { id: "fitting_stitching", title: "Perfect Fit & Comfort", desc: "Flattering cuts, pure comfort & neat finish", iconName: "Shirt", defaultSelected: true },
+  { id: "western_styling", title: "Trendy Western Style", desc: "Modern jeans, crop tops & chic dresses", iconName: "ShoppingBag", defaultSelected: false },
   { id: "jewellery_matching", title: "Matching Accessories", desc: "Gorgeous artificial jewellery & shawls", iconName: "Gem", defaultSelected: false },
   { id: "best_pricing", title: "Best Affordable Pricing", desc: "Budget friendly with premium luxury look", iconName: "DollarSign", defaultSelected: false },
   { id: "customer_service", title: "Warm Hospitality", desc: "Helpful, patient staff & quick assistance", iconName: "Heart", defaultSelected: false },
-  { id: "latest_trends", title: "Trending Fashion", desc: "Modern co-ords, party sarees & trendy kurtis", iconName: "Flame", defaultSelected: false },
   { id: "trusted_boutique", title: "Trusted Boutique", desc: "25,000+ satisfied customers", iconName: "ThumbsUp", defaultSelected: false }
 ];
 

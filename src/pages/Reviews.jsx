@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { ReviewCard } from '../components/ReviewCard';
 
-// Realistic Customer Reviews for Umaiyaal Botique
+// Realistic Customer Reviews for Umaiyaal Botique (Ethnic & Western)
 const REVIEWS_DATA = [
   {
     id: 1,
@@ -45,6 +45,17 @@ const REVIEWS_DATA = [
   },
   {
     id: 3,
+    name: 'Shalini Manoharan',
+    rating: 5,
+    date: '1 week ago',
+    location: 'Cumbum',
+    service: 'Western Wear',
+    category: 'Western Dresses & Crop Tops',
+    verified: true,
+    comment: 'Absolutely love their western collection! Bought an A-line western dress and ribbed crop tops for college. The fabric is super soft, trendy cuts, and fits like a dream. Finally a boutique in town with aesthetic western wear!'
+  },
+  {
+    id: 4,
     name: 'Meena Vijayaraghavan',
     rating: 5,
     date: '2 weeks ago',
@@ -55,18 +66,18 @@ const REVIEWS_DATA = [
     comment: 'Their flowy maxi dresses and cotton daily wear kurtis are pure bliss! Very breathable, graceful silhouettes, and modern cuts. Umaiyaal Botique staff are so patient and courteous while showing options.'
   },
   {
-    id: 4,
+    id: 5,
     name: 'Divya Bharathi',
     rating: 5,
     date: '3 weeks ago',
     location: 'Theni',
-    service: 'Bottom Wear',
-    category: 'Cotton Pants & Leggings',
+    service: 'Western Wear',
+    category: 'Jeans & Jeggings',
     verified: true,
-    comment: 'Picked their 4-way stretch leggings and cotton straight pants. The comfort level is top-notch. Perfect ankle length and zero transparency. Also picked shimmer leggings for a sangeet event!'
+    comment: 'Picked high-waist stretch jeans and jeggings along with graphic t-shirts. The denim fit and comfort are incredible! Perfect ankle length and stretchability for all-day travel.'
   },
   {
-    id: 5,
+    id: 6,
     name: 'Deepa Vasanthan',
     rating: 5,
     date: '1 month ago',
@@ -77,7 +88,7 @@ const REVIEWS_DATA = [
     comment: 'The embroidery work shawls and lightweight chiffon dupattas took my simple outfit to a whole new level! High aesthetic appeal and very soft feel on the skin. Great hospitality from the boutique team.'
   },
   {
-    id: 6,
+    id: 7,
     name: 'Ananya Karthikeyan',
     rating: 4,
     date: '1 month ago',
@@ -88,7 +99,7 @@ const REVIEWS_DATA = [
     comment: 'Travelled from Periyakulam especially for their cut work and raw silk sarees. Amazing collection with modern color palettes. Store was crowded on Sunday, but the final saree drape made it worth every minute.'
   },
   {
-    id: 7,
+    id: 8,
     name: 'Nandhini Prakash',
     rating: 5,
     date: '1 month ago',
@@ -99,7 +110,7 @@ const REVIEWS_DATA = [
     comment: 'Purchased bridal artificial jewellery sets along with matching chudi sets. The antique finish looks identical to authentic gold jewellery. Got so many compliments in family photos!'
   },
   {
-    id: 8,
+    id: 9,
     name: 'Sangeetha Murugan',
     rating: 5,
     date: '2 months ago',
@@ -110,7 +121,7 @@ const REVIEWS_DATA = [
     comment: 'Their pure Mul cotton chudi sets are an absolute must-have for summer. Feather-light, soft on sensitive skin, and elegant prints. Truly worth every single rupee!'
   },
   {
-    id: 9,
+    id: 10,
     name: 'Gayathri Raman',
     rating: 4,
     date: '2 months ago',
@@ -197,6 +208,8 @@ export const Reviews = () => {
       result = result.filter((r) => r.rating === 4);
     } else if (selectedFilter === 'Sarees') {
       result = result.filter((r) => r.service === 'Sarees');
+    } else if (selectedFilter === 'Western') {
+      result = result.filter((r) => r.service === 'Western Wear');
     } else if (selectedFilter === 'Chudi Sets') {
       result = result.filter((r) => r.service === 'Chudi Sets');
     } else if (selectedFilter === 'Kurtis') {
@@ -219,12 +232,13 @@ export const Reviews = () => {
     { label: '5★', value: '5★' },
     { label: '4★', value: '4★' },
     { label: 'Sarees', value: 'Sarees' },
+    { label: 'Western', value: 'Western' },
     { label: 'Chudi Sets', value: 'Chudi Sets' },
     { label: 'Kurtis', value: 'Kurtis' },
     { label: 'Shawls', value: 'Shawls' }
   ];
 
-  const googleReviewSubmissionUrl = "https://g.page/r/CTONmpLlmZu-EBM/review";
+  const googleReviewSubmissionUrl = "https://g.page/r/CSkwyUzjxg-pEBM/review";
 
   return (
     <div className="min-h-screen bg-[#0e0714] text-gray-100 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#ec4899] selection:text-white pb-20">
@@ -233,9 +247,9 @@ export const Reviews = () => {
         <title>Customer Reviews & Testimonials | Umaiyaal Botique</title>
         <meta 
           name="description" 
-          content="Read genuine customer reviews of Umaiyaal Botique. 25,000+ satisfied customers trust Umaiyaal Botique for designer sarees, chudi sets, kurtis, and artificial jewellery." 
+          content="Read genuine customer reviews of Umaiyaal Botique. 25,000+ satisfied customers trust Umaiyaal Botique for designer sarees, western dresses, jeans, crop tops, chudi sets, and artificial jewellery." 
         />
-        <meta name="keywords" content="Umaiyaal Botique reviews, designer boutique reviews, soft silk sarees reviews, chudi sets testimonials, women clothing boutique reviews" />
+        <meta name="keywords" content="Umaiyaal Botique reviews, western dresses reviews, jeans jeggings reviews, designer boutique reviews, soft silk sarees reviews, chudi sets testimonials" />
         
         {/* JSON-LD Schema for LocalBusiness + AggregateRating */}
         <script type="application/ld+json">
@@ -247,8 +261,8 @@ export const Reviews = () => {
       <header className="sticky top-0 z-40 bg-[#0e0714]/90 backdrop-blur-md border-b border-[#2a1338]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#ec4899] to-[#9333ea] flex items-center justify-center font-black text-white text-xl font-['Outfit'] shadow-[0_0_15px_rgba(236,72,153,0.4)]">
-              U
+            <div className="w-10 h-10 rounded-xl overflow-hidden bg-gradient-to-tr from-[#ec4899] to-[#9333ea] flex items-center justify-center font-black text-white text-xl font-['Outfit'] shadow-[0_0_15px_rgba(236,72,153,0.4)] border border-pink-400/40">
+              <img src="/logo.png" alt="Umaiyaal" className="w-full h-full object-cover" />
             </div>
             <div>
               <span className="text-xl font-extrabold text-white tracking-wider font-['Outfit'] uppercase block leading-none">
@@ -301,10 +315,10 @@ export const Reviews = () => {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-extrabold text-white font-['Outfit'] tracking-tight mb-4">
-            Customer Reviews & Testimonials
+            Customer Reviews &amp; Testimonials
           </h1>
           <p className="text-base sm:text-lg text-pink-100/70 max-w-2xl mx-auto mb-8">
-            Real feedback from women and families across Tamil Nadu who love shopping at Umaiyaal Botique.
+            Real feedback from women and shoppers who love our ethnic sarees, chudis &amp; trendy western outfits.
           </p>
 
           {/* Visible Star Rating Summary Banner */}
@@ -322,7 +336,7 @@ export const Reviews = () => {
                     ))}
                   </div>
                   <div className="text-xs sm:text-sm font-semibold text-pink-100/80">
-                    ⭐ 4.9 / 5 — Based on <span className="text-[#ec4899] font-bold">500+ boutique reviews</span>
+                    ⭐ 4.9 / 5 — Based on <span className="text-[#ec4899] font-bold">540+ boutique reviews</span>
                   </div>
                 </div>
               </div>
@@ -330,7 +344,7 @@ export const Reviews = () => {
               {/* Verified Trust Badge */}
               <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#230e36] border border-[#441c66] text-xs text-pink-200">
                 <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>100% Genuine Google & In-Store Reviews</span>
+                <span>100% Genuine Google &amp; In-Store Reviews</span>
               </div>
             </div>
           </div>
