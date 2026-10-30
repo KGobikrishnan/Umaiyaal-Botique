@@ -13,7 +13,7 @@ export const INITIAL_BUSINESS = {
   bannerUrl: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80",
   tagline: "Exclusive Designer Sarees, Chudi Sets, Kurtis, Shawls & Fashion Jewellery",
   address: "Theni Main Road, Tamil Nadu",
-  googlePlaceUrl: "https://g.page/r/CSkwyUzjxg-pEBM/review",
+  googlePlaceUrl: "https://g.page/r/CTONmpLlmZu-EBM/review",
   verified: true,
   rating: 4.9,
   totalReviews: 2450,

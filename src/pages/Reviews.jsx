@@ -224,7 +224,7 @@ export const Reviews = () => {
     { label: 'Shawls', value: 'Shawls' }
   ];
 
-  const googleReviewSubmissionUrl = "https://g.page/r/CSkwyUzjxg-pEBM/review";
+  const googleReviewSubmissionUrl = "https://g.page/r/CTONmpLlmZu-EBM/review";
 
   return (
     <div className="min-h-screen bg-[#0e0714] text-gray-100 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#ec4899] selection:text-white pb-20">
